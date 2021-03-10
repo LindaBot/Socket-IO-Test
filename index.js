@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(80, () => {
-    console.log('listening on *:80');
+http.listen(process.env.PORT, () => {
+    console.log('listening on *');
 });
 
 
