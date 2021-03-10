@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(3000, () => {
-    console.log('listening on *:3000');
+http.listen(80, () => {
+    console.log('listening on *:80');
 });
 
 
