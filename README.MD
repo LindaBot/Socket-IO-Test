@@ -1,3 +1,4 @@
+## How to debug in VSC
 See documentation [here](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_auto-attach)
 
 * Press Control + Shift + P and look for Auto Attach and set it to Always
