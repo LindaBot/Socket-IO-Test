@@ -9,12 +9,18 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(process.env.PORT, () => {
-    console.log('listening on *');
+http.listen(process.env.PORT || 3000, () => {
+    console.log('local build: listening on 3000');
 });
 
 
 io.on('connection', (socket) => {
+    // Get a list of nicknames from all connected sockets
+    var usernames = connectedSockets.map(user => user.nickname)
+
+    // Send a list of users to the newly subscribed client
+    io.to(socket.id).emit("users", {"usernames":usernames})
+
     // Subscribe to nickname setting
     socket.on('nickname', (name) => {
         // Set the nickname for the socket/user
@@ -42,7 +48,6 @@ io.on('connection', (socket) => {
             }
         }
         console.log('a user disconnected');
-        console.log(connectedSockets);
 
         // Get a list of nicknames from all connected sockets
         var usernames = connectedSockets.map(user => user.nickname)

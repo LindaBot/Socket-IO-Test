@@ -33,12 +33,12 @@
           if (input.value) {
             socket.emit('nickname', input.value);
             input.value = '';
+            document.getElementById("sendBtn").disabled = true;
             document.getElementById("sendBtn").style.display = "none";
           }
         });
       
         socket.on("users", (users) => {
-            console.log(users);
             // Delete old list, pretty dumb implementation
             messages.querySelectorAll('*').forEach(n => n.remove());
 
